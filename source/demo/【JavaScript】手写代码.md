@@ -215,7 +215,7 @@ function delay(func, time, ...args) {
   实现思路：每次事件被触发时，设置一个计时器，在指定的时间间隔内，如果该事件被再次触发，则清除计时器并重新开始计时，直到指定的时间间隔内没有事件触发为止，然后调用函数。
 
   ```javascript
-  function debounce(fn, wait) {
+  (function debounce(fn, wait) {
     let timer;
     return (...args) => {
       clearTimeout(timer);
@@ -243,6 +243,33 @@ function delay(func, time, ...args) {
   }
   ```
 
-  
+
+## 3. cloneDeep
+
+```javascript
+function cloneDeep(target, map = new WeakMap()) {
+    if (typeof target !== 'object') return target
+    if (target === null) return target
+
+    if (target instanceof Date) return target
+    if (target instanceof RegExp) return target
+
+    if (map.has(target)) return map.get(target)
+
+    const cloneTarget = new target.constructor()
+
+    Reflect.ownKeys(target).forEach(key => {
+        cloneTarget[key] = cloneDeep(target[key], map)
+    })
+
+    map.set(target, cloneTarget)
+
+    return cloneTarget
+}
+```
+
+
+
+
 
  
