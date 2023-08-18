@@ -1,5 +1,5 @@
 ---
-title: 【精通CSS】04_可见格式化模型
+title: 【精通CSS】04.可见格式化模型
 tags: CSS
 keywords: CSS
 description: 《精通CSS：高级Web标准解决方案（第3版）》第三章：可见格式化模型。主要内容：盒模型、浮动和定位。
